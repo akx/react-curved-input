@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-lib:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.x"
+          cache: yarn
+      - run: yarn
+      - run: yarn lint
+      - run: yarn build:lib
+      - run: npm pack
+      - uses: actions/upload-artifact@v3
+        with:
+          name: 'dist'
+          path: '*.tgz'
+  build-web:
+    needs:
+      - build-lib
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.x"
+          cache: yarn
+      - run: yarn
+      - run: yarn build --base=/react-curved-input/
+      - uses: JamesIves/github-pages-deploy-action@4.0.0
+        with:
+          branch: gh-pages
+          folder: dist
+        if: ${{ github.event_name == 'push' }}

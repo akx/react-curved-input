@@ -1,0 +1,63 @@
+{
+  "name": "react-curved-input",
+  "version": "0.9.0",
+  "description": "A small React component to turn any SVG path into a slider.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akx/react-curved-input.git"
+  },
+  "keywords": [
+    "react",
+    "input",
+    "svg",
+    "curve"
+  ],
+  "author": "Aarni Koskela",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akx/react-curved-input/issues"
+  },
+  "homepage": "https://github.com/akx/react-curved-input#readme",
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "main": "./dist/react-curved-input.umd.js",
+  "module": "./dist/react-curved-input.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/react-curved-input.es.js",
+      "require": "./dist/react-curved-input.umd.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:lib": "tsc && vite build --mode=lib",
+    "lint": "eslint ."
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || 17.x|| 18.x"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.3",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.21.0",
+    "@typescript-eslint/parser": "^5.21.0",
+    "@vitejs/plugin-react": "^1.3.1",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "prettier": "^2.6.2",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "typescript": "^4.6.3",
+    "vite": "^2.9.6",
+    "vite-dts": "^1.0.4"
+  },
+  "prettier": {
+    "trailingComma": "all"
+  }
+}
