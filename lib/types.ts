@@ -16,3 +16,5 @@ export interface CurveInputProps {
   onChange: (pos: number) => void;
   children: (info: CurveInfo) => React.ReactChild;
 }
+
+export type Point = [number, number];
