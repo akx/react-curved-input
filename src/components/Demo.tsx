@@ -16,8 +16,8 @@ export function Demo({
 }) {
   const [pos, setPos] = React.useState(0.1);
   return (
-    <div>
-      <div>
+    <div style={{ minWidth: "300px" }}>
+      <div style={{ textAlign: "center" }}>
         Position: {pos.toFixed(2)}&nbsp;
         <input
           type="range"
@@ -35,7 +35,7 @@ export function Demo({
         numPoints={numPoints}
         position={pos}
         onChange={setPos}
-        style={{ border: "1px solid black" }}
+        style={{ border: "1px solid black", maxWidth: `${width}px` }}
       >
         {renderer}
       </CurveInput>
