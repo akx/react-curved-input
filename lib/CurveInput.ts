@@ -28,16 +28,17 @@ export default function CurveInput({
     (event) => {
       const svg = svgRef.current;
       if (!svg) return;
-      const rect = svg.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
+      const { bottom, left, right, top } = svg.getBoundingClientRect();
+      const { clientX, clientY } = event;
+      const x = ((clientX - left) / (right - left)) * width;
+      const y = ((clientY - top) / (bottom - top)) * height;
       const pointIndex = findClosestPoint(pathPoints, x, y, 5, maxThreshold);
       if (pointIndex !== undefined) {
         const newPos = pointIndex / (numPoints - 1);
         onChange(newPos);
       }
     },
-    [onChange, pathPoints, numPoints, maxThreshold],
+    [width, height, pathPoints, maxThreshold, numPoints, onChange],
   );
   const startTracking = React.useCallback(() => {
     isTrackingRef.current = true;
