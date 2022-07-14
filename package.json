@@ -18,6 +18,7 @@
     "url": "https://github.com/akx/react-curved-input/issues"
   },
   "homepage": "https://github.com/akx/react-curved-input#readme",
+  "npmPage": "https://www.npmjs.com/package/react-curved-input",
   "files": [
     "dist",
     "lib"

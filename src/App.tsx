@@ -1,11 +1,15 @@
 import React from "react";
 import { SCurve } from "./demos/SCurve";
 import { ArchimedeanSpiral } from "./demos/ArchimedeanSpiral";
+import pkg from "../package.json";
 
 function Expose() {
   return (
     <>
-      <h1>react-curved-input</h1>
+      <h1>react-curved-input {pkg.version}</h1>
+      <p>
+        <a href={pkg.homepage}>GitHub</a> &middot; <a href={pkg.npmPage}>NPM</a>
+      </p>
       <p>
         This component was originally written as an answer to{" "}
         <a href="https://stackoverflow.com/q/72961879/51685">
