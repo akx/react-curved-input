@@ -1,4 +1,4 @@
-type Point = [number, number];
+import type { Point } from "./types";
 
 /**
  * Given an SVG path, compute its points at the resolution of `n` total points.
