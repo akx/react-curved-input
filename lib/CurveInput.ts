@@ -44,6 +44,10 @@ export default function CurveInput({
     (event) => {
       const svg = svgRef.current;
       if (!svg || trackingRef.current === null) return;
+      // Prevent scrolling while tracking touch events
+      if (event.type.startsWith("touch")) {
+        event.preventDefault();
+      }
       const coords = getEventXY(event, trackingRef.current);
       if (!coords) return;
       const { bottom, left, right, top } = svg.getBoundingClientRect();
@@ -54,8 +58,6 @@ export default function CurveInput({
       if (pointIndex !== undefined) {
         const newPos = pointIndex / (numPoints - 1);
         onChange(newPos);
-        // If this caused motion, don't scroll (e.g. touches).
-        event.preventDefault();
       }
       // See if the event finalized this motion; if so, stop tracking.
       const { type } = event;
@@ -67,7 +69,9 @@ export default function CurveInput({
   );
   const startTracking = React.useCallback((event) => {
     event.stopPropagation();
+    // Prevent scrolling when touch interaction starts
     if (event.type.startsWith("touch")) {
+      event.preventDefault();
       trackingRef.current = event.changedTouches[0].identifier;
     } else {
       trackingRef.current = -1;
