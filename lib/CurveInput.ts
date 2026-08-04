@@ -97,6 +97,7 @@ export default function CurveInput({
       ref: svgRef,
       viewBox: `0 0 ${width} ${height}`,
       ...svgProps,
+      touchAction: "none",
       onMouseDown: startTracking,
       onTouchStart: startTracking,
       onTouchMove: onMotion,
